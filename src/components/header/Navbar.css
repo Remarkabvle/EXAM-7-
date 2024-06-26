@@ -1,0 +1,68 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 10px 20px;
+}
+.navbar .navbar-logo img {
+  height: 40px;
+}
+.navbar .navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 60px;
+  margin: 0;
+  padding: 0;
+}
+.navbar .navbar-links li a {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 36px;
+  color: black;
+  transition: 0.3s;
+}
+.navbar .navbar-links li a:hover {
+  color: #00aaff;
+}
+.navbar .navbar-toggle {
+  display: none;
+  cursor: pointer;
+}
+.navbar .navbar-toggle svg {
+  color: #000;
+}
+@media (max-width: 768px) {
+  .navbar .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 0;
+  }
+  .navbar .navbar-links li {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+  .navbar .navbar-links.open {
+    display: flex;
+  }
+  .navbar .navbar-links .navbar-toggle {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .navbar .navbar-toggle {
+    display: flex;
+  }
+}
+/*# sourceMappingURL=Navbar.css.map */
