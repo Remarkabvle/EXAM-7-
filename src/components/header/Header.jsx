@@ -1,8 +1,13 @@
 import React from "react";
 import { FaUser, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Header.scss";
 
 function Header() {
+  const wishlist = useSelector((state) => state.wishlist);
+  const wishlistCount = wishlist.length;
+
   return (
     <header className="header header__container">
       <div className="header__left">
@@ -14,9 +19,12 @@ function Header() {
           <div className="header__icon">
             <FaUser />
           </div>
-          <div className="header__icon">
+          <NavLink to="/wishlist" className="header__icon">
             <FaHeart />
-          </div>
+            {wishlistCount > 0 && (
+              <span className="header__wishlist-badge">{wishlistCount}</span>
+            )}
+          </NavLink>
           <div className="header__icon header__cart">
             <FaShoppingCart />
             <span className="header__cart-badge">2</span>

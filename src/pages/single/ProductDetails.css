@@ -1,0 +1,185 @@
+.product-details {
+  display: flex;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+.product-details .product-image {
+  flex: 1;
+}
+.product-details .product-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+.product-details .product-image .thumbnails {
+  display: flex;
+  margin-top: 10px;
+}
+.product-details .product-image .thumbnails img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+.product-details .product-image .thumbnails img.selected {
+  border-color: #3498db;
+}
+.product-details .product-info {
+  flex: 1;
+  padding-left: 40px;
+}
+.product-details .product-info h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.product-details .product-info .rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.product-details .product-info .rating .stars {
+  margin-right: 10px;
+  color: #f39c12;
+}
+.product-details .product-info .rating .reviews {
+  margin-right: 10px;
+  color: #3498db;
+}
+.product-details .product-info .rating a {
+  color: #3498db;
+  text-decoration: none;
+}
+.product-details .product-info .price {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+.product-details .product-info .price .current-price {
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #3498db;
+}
+.product-details .product-info .price .old-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 10px;
+}
+.product-details .product-info .price .discount {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
+.product-details .product-info .availability {
+  margin-bottom: 20px;
+}
+.product-details .product-info .availability p {
+  margin: 5px 0;
+}
+.product-details .product-info .availability p span {
+  font-weight: bold;
+}
+.product-details .product-info .color-selection {
+  margin-bottom: 20px;
+}
+.product-details .product-info .color-selection p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.product-details .product-info .color-selection .color-btn {
+  width: 24px;
+  height: 24px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.product-details .product-info .color-selection .color-btn.selected {
+  border-color: #3498db;
+}
+.product-details .product-info .size-selection {
+  margin-bottom: 20px;
+}
+.product-details .product-info .size-selection p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.product-details .product-info .size-selection select {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.product-details .product-info .quantity-selection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.product-details .product-info .quantity-selection button {
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+}
+.product-details .product-info .quantity-selection button:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+.product-details .product-info .quantity-selection button:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
+.product-details .product-info .quantity-selection span {
+  padding: 0 15px;
+  font-size: 18px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.product-details .product-info .actions {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.product-details .product-info .actions button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+}
+.product-details .product-info .actions button svg {
+  margin-right: 5px;
+}
+.product-details .product-info .actions .add-to-cart {
+  background-color: #3498db;
+  color: white;
+}
+.product-details .product-info .actions .add-to-wishlist {
+  background-color: white;
+  color: #3498db;
+  border: 2px solid #3498db;
+}
+.product-details .product-info .share-buttons {
+  display: flex;
+}
+.product-details .product-info .share-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+}
+.product-details .product-info .share-buttons .facebook {
+  background-color: #3b5998;
+  color: white;
+}
+.product-details .product-info .share-buttons .twitter {
+  background-color: #1da1f2;
+  color: white;
+}
+/*# sourceMappingURL=ProductDetails.css.map */
