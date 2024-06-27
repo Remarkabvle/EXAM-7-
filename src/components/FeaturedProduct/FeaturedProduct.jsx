@@ -1,5 +1,6 @@
 import React from "react";
 import "./FeaturedProduct.scss";
+import nt1 from '../../assets/nt1.png'
 
 const FeaturedProduct = () => {
   const products = [
@@ -8,15 +9,15 @@ const FeaturedProduct = () => {
       price: 499,
       originalPrice: 599,
       imageUrl:
-        "https://via.placeholder.com/300x200.png?text=Green+Swade+Nike+Sneakers",
+        nt1
+      ,
       rating: 4.5,
     },
     {
       name: "Red Swade Nike Sneakers",
       price: 399,
       originalPrice: 499,
-      imageUrl:
-        "https://via.placeholder.com/300x200.png?text=Red+Swade+Nike+Sneakershttps://via.placeholder.com/300x200.png?text=Green+Swade+Nike+Sneakers",
+      imageUrl:nt1,
       rating: 4.0,
     },
     {
@@ -24,7 +25,7 @@ const FeaturedProduct = () => {
       price: 299,
       originalPrice: 399,
       imageUrl:
-        "https://via.placeholder.com/300x200.png?text=Green+Swade+Nike+Sneakers",
+        nt1,
       rating: 4.2,
     },
   ];

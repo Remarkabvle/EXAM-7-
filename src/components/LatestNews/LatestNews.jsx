@@ -1,5 +1,9 @@
 import React from 'react';
 import './LatestNews.scss';
+import n1 from '../../assets/n1.png'
+import n2 from '../../assets/n2.png'
+import n3 from '../../assets/n3.png'
+
 
 const LatestNews = () => {
   const newsItems = [
@@ -7,19 +11,19 @@ const LatestNews = () => {
       date: '01 Jan, 2016',
       title: 'Fashion Industry',
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      image: 'https://via.placeholder.com/50', // Placeholder image
+      image: n1,
     },
     {
       date: '01 Jan, 2016',
       title: 'Best Design Tools',
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      image: 'https://via.placeholder.com/50', // Placeholder image
+      image: n2, // Placeholder image
     },
     {
       date: '01 Jan, 2016',
       title: 'HR Community',
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      image: 'https://via.placeholder.com/50', // Placeholder image
+      image: n3, // Placeholder image
     },
   ];
 
