@@ -3,11 +3,9 @@ import './Modal.scss';
 
 const Modal = ({ title, image, onClose }) => {
   useEffect(() => {
-    // Add class to body to prevent scrolling
     document.body.style.overflow = 'hidden';
 
     return () => {
-      // Remove class from body when modal is closed
       document.body.style.overflow = 'auto';
     };
   }, []);

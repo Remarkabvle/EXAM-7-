@@ -17,7 +17,7 @@ const LatestNews = () => {
       date: '01 Jan, 2016',
       title: 'Best Design Tools',
       description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      image: n2, // Placeholder image
+      image: n2, 
     },
     {
       date: '01 Jan, 2016',

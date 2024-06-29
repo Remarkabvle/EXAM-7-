@@ -16,7 +16,6 @@ function Header() {
 
   const handleCartClick = () => {
     if (!debouncedClick) {
-      // Handle your cart click logic here
       setDebouncedClick(true);
       setTimeout(() => setDebouncedClick(false), 1000); 
     }

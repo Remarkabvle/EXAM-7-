@@ -22,7 +22,6 @@ const ProductsList = () => {
 
   return (
     <div className="products-list-wrapper" style={{marginTop: '150px'}}>
-      {/* Category filter */}
       <div className="category-filter">
         <ul>
           <li
@@ -42,13 +41,11 @@ const ProductsList = () => {
           ))}
         </ul>
       </div>
-      {/* Product list */}
       <div className="products-list container">
         {filteredProducts.slice(0, visibleProducts).map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-      {/* Load more button */}
       {visibleProducts < filteredProducts.length && (
         <button className="load-more-btn" onClick={loadMoreProducts}>
           LOAD MORE

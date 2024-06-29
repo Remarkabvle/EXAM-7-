@@ -1,11 +1,11 @@
 import React from 'react';
 import { FaFacebookF, FaTwitter, FaCcVisa, FaCcMastercard, FaCcPaypal, FaCcAmex } from 'react-icons/fa';
-import logo from '../../assets/logo.svg'; // Update this path to your actual logo image
+import logo from '../../assets/logo.svg'; 
 import './Footer.scss';
 
 const Footer = () => {
   return (
-    <footer className="footer-container"> {/* Added className here */}
+    <footer className="footer-container"> 
       <div className="footer__top container">
         <ul>
           <img src={logo} alt="E-Comm Logo" />
