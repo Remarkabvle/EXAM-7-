@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./Contact.scss";
 
+const BOT_TOKEN = "7313879684:AAH0lhoKddXhkYP-YO5QnYueauqqT3J9hzE";
+const CHAT_ID = "-1002180292093";
+
 function Contact() {
   const [formData, setFormData] = useState({
     fullname: "",
@@ -15,8 +18,23 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+    let text = "Contact Form Submission:%0A";
+    text += `Fullname: <b>${formData.fullname}</b>%0A`;
+    text += `Email: <b>${formData.email}</b>%0A`;
+    text += `Message: <b>${formData.message}</b>`;
+
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}&parse_mode=html`;
+
+    const api = new XMLHttpRequest();
+    api.open("GET", url, true);
+    api.send();
+
+    // Reset form fields
+    setFormData({
+      fullname: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
@@ -42,6 +60,7 @@ function Contact() {
               value={formData.fullname}
               onChange={handleChange}
               className="form-input"
+              required
             />
           </div>
           <div className="form-group">
@@ -55,6 +74,7 @@ function Contact() {
               value={formData.email}
               onChange={handleChange}
               className="form-input"
+              required
             />
           </div>
           <div className="form-group">
@@ -67,8 +87,12 @@ function Contact() {
               value={formData.message}
               onChange={handleChange}
               className="form-textarea"
+              required
             />
           </div>
+          <button type="submit" className="submit-btn search-button">
+            Send Message
+          </button>
         </form>
       </div>
       <div className="search-container">

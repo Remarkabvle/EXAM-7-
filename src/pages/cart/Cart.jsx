@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, increaseQuantity, decreaseQuantity, clearCart } from '../../context/cartSlice';
-import PaymentModal from './PaymentModal';
-import './Cart.scss';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+} from "../../context/cartSlice";
+import PaymentModal from "./PaymentModal";
+import "./Cart.scss";
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const [voucherCode, setVoucherCode] = useState('');
+  const [voucherCode, setVoucherCode] = useState("");
   const [couponDiscount, setCouponDiscount] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
   const handleRemoveClick = (product) => {
-    if (window.confirm('Are you sure you want to remove this item from your cart?')) {
+    if (
+      window.confirm(
+        "Are you sure you want to remove this item from your cart?"
+      )
+    ) {
       dispatch(removeFromCart(product));
     }
   };
@@ -30,21 +39,28 @@ function Cart() {
   };
 
   const handleVoucherCodeSubmit = () => {
-    if (voucherCode === 'DISCOUNT10') {
+    if (voucherCode === "DISCOUNT10") {
       setCouponDiscount(10);
     } else {
-      alert('Invalid voucher code');
+      alert("Invalid voucher code");
     }
   };
 
   const clearCartItems = () => {
     dispatch(clearCart());
-    localStorage.removeItem('cart'); 
+    localStorage.removeItem("cart");
   };
 
-  const totalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalAmount = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
   const shippingFee = 20;
-  const totalWithDiscount = (totalAmount + shippingFee - couponDiscount).toFixed(2);
+  const totalWithDiscount = (
+    totalAmount +
+    shippingFee -
+    couponDiscount
+  ).toFixed(2);
 
   return (
     <div className="cart">
@@ -66,8 +82,17 @@ function Cart() {
               {cart.map((item) => (
                 <tr key={item.id} className="cart-item">
                   <td className="product-column">
-                    <button className="remove-btn" onClick={() => handleRemoveClick(item)}>×</button>
-                    <img src={item.image} alt={item.title} className="cart-item-image" />
+                    <button
+                      className="remove-btn"
+                      onClick={() => handleRemoveClick(item)}
+                    >
+                      ×
+                    </button>
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="cart-item-image"
+                    />
                     <div className="cart-item-info">
                       <h3>{item.title}</h3>
                     </div>
@@ -75,9 +100,13 @@ function Cart() {
                   <td>${(item.price * item.quantity).toFixed(2)}</td>
                   <td>
                     <div className="quantity-control">
-                      <button onClick={() => handleDecreaseQuantity(item)}>-</button>
+                      <button onClick={() => handleDecreaseQuantity(item)}>
+                        -
+                      </button>
                       <span>{item.quantity}</span>
-                      <button onClick={() => handleIncreaseQuantity(item)}>+</button>
+                      <button onClick={() => handleIncreaseQuantity(item)}>
+                        +
+                      </button>
                     </div>
                   </td>
                   <td>${item.price.toFixed(2)}</td>
@@ -86,7 +115,12 @@ function Cart() {
             </tbody>
           </table>
           <div className="voucher-section">
-            <input type="text" placeholder="Voucher Code" value={voucherCode} onChange={handleVoucherCodeChange} />
+            <input
+              type="text"
+              placeholder="Voucher Code"
+              value={voucherCode}
+              onChange={handleVoucherCodeChange}
+            />
             <button onClick={handleVoucherCodeSubmit}>Apply</button>
           </div>
           <div className="summary-section">
@@ -100,20 +134,28 @@ function Cart() {
             </div>
             <div className="summary-item">
               <span>Coupon</span>
-              <span>{couponDiscount ? `$${couponDiscount}` : 'No'}</span>
+              <span>{couponDiscount ? `$${couponDiscount}` : "No"}</span>
             </div>
             <hr />
             <div className="summary-total">
               <span>TOTAL</span>
               <span>${totalWithDiscount}</span>
             </div>
-            <button className="checkout-button" onClick={() => setShowModal(true)}>
+            <button
+              className="checkout-button"
+              onClick={() => setShowModal(true)}
+            >
               Check out
             </button>
           </div>
         </>
       )}
-      <PaymentModal showModal={showModal} setShowModal={setShowModal} clearCart={clearCartItems} />
+      <PaymentModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        clearCart={clearCartItems}
+        data={cart}
+      />
     </div>
   );
 }
