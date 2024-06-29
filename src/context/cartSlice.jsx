@@ -11,8 +11,7 @@ const cartSlice = createSlice({
       if (!existingProduct) {
         state.push({ ...product, quantity: 1 });
       } else {
-        // Optionally, you can increase quantity here if needed
-        // existingProduct.quantity += 1;
+       
       }
     },
     removeFromCart: (state, action) => {
@@ -30,8 +29,11 @@ const cartSlice = createSlice({
         product.quantity -= 1;
       }
     },
+    clearCart: (state) => {
+      return [];
+    }
   },
 });
 
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity } = cartSlice.actions;
+export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

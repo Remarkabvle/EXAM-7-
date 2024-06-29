@@ -1,42 +1,40 @@
-import React, { useState } from 'react';
-import { useGetProductsQuery } from './productsApi';
-import ProductCard from '../../components/products/ProductCard';
-import './ProductsList.scss';
+import React, { useState } from "react";
+import { useGetProductsQuery } from "./productsApi";
+import ProductCard from "../../components/products/ProductCard";
+import "./ProductsList.scss";
 
 const ProductsList = () => {
   const { data: products, error, isLoading } = useGetProductsQuery();
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [visibleProducts, setVisibleProducts] = useState(5); // Initial number of products to show
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  // Filtering products by category
-  const categories = [...new Set(products.map(product => product.category))];
+  const categories = [...new Set(products.map((product) => product.category))];
   const filteredProducts = selectedCategory
-    ? products.filter(product => product.category === selectedCategory)
+    ? products.filter((product) => product.category === selectedCategory)
     : products;
 
-  // Function to load more products
   const loadMoreProducts = () => {
-    setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 5);
+    setVisibleProducts((prevVisibleProducts) => prevVisibleProducts + 5);
   };
 
   return (
-    <div className="products-list-wrapper">
+    <div className="products-list-wrapper" style={{marginTop: '150px'}}>
       {/* Category filter */}
       <div className="category-filter">
         <ul>
           <li
-            className={!selectedCategory ? 'active' : ''}
-            onClick={() => setSelectedCategory('')}
+            className={!selectedCategory ? "active" : ""}
+            onClick={() => setSelectedCategory("")}
           >
             All
           </li>
-          {categories.map(category => (
+          {categories.map((category) => (
             <li
               key={category}
-              className={selectedCategory === category ? 'active' : ''}
+              className={selectedCategory === category ? "active" : ""}
               onClick={() => setSelectedCategory(category)}
             >
               {category}
@@ -46,7 +44,7 @@ const ProductsList = () => {
       </div>
       {/* Product list */}
       <div className="products-list container">
-        {filteredProducts.slice(0, visibleProducts).map(product => (
+        {filteredProducts.slice(0, visibleProducts).map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

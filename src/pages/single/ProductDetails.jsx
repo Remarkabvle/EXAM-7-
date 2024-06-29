@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetProductByIdQuery } from "../../features/products/productsApi";
+import '../../components/products/ProductCard.scss'
+import '../../features/products/ProductsList.scss'
 import {
   FaHeart,
   FaRegHeart,
@@ -14,6 +16,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { like } from "../../context/WishlistSlice";
 import "./Single.scss";
+import ProductCard from "../../components/products/ProductCard";
+import ProductsList from "../../features/products/ProductsList";
 
 const Single = () => {
   const { id } = useParams();
@@ -179,7 +183,10 @@ const Single = () => {
               <option value="XL">XL</option>
             </select>
           </div>
-          <div className="action-column" style={{ display: 'flex', gap: '100px' }}>
+          <div
+            className="action-column"
+            style={{ display: "flex", gap: "100px" }}
+          >
             <div className="quantity-selection">
               <button
                 className="quantity-button"
@@ -195,7 +202,7 @@ const Single = () => {
                 +
               </button>
             </div>
-            <div style={{ display: 'flex', gap: '20px' }}>
+            <div style={{ display: "flex", gap: "20px" }}>
               <button className="add-to-cart">
                 <FaCartPlus style={{ marginRight: "5px" }} /> Add to Cart
               </button>
@@ -245,9 +252,14 @@ const Single = () => {
           {activeTab === "reviews" && (
             <div className="product-reviews">No reviews yet</div>
           )}
-          {activeTab === "another" && <div className="another-tab">Content for another tab</div>}
+          {activeTab === "another" && (
+            <div className="another-tab">Content for another tab</div>
+          )}
         </div>
       </div>
+      {/* <div style={{marginTop: '100px'}}> */}
+        <ProductsList  />
+      {/* </div> */}
     </div>
   );
 };

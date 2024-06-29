@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.scss';
 import logo from '../../assets/logo.svg';
 
@@ -9,6 +9,7 @@ function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const menuRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -23,6 +24,11 @@ function Navbar() {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
       setIsOpen(false);
     }
+  };
+
+  const handleLogoClick = () => {
+    navigate('/');
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -41,7 +47,7 @@ function Navbar() {
 
   return (
     <nav className="navbar container" ref={menuRef}>
-      <div className="navbar-logo">
+      <div className="navbar-logo" onClick={handleLogoClick}>
         <img src={logo} alt="E-Comm Logo" />
       </div>
       <div className="navbar-toggle" onClick={toggleMenu}>
@@ -49,22 +55,38 @@ function Navbar() {
       </div>
       <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
         <li>
-          <NavLink to="/" onClick={toggleMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+          <NavLink
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+          >
             HOME
           </NavLink>
         </li>
         <li>
-          <NavLink to="/bags" onClick={toggleMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+          <NavLink
+            to="/bags"
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+          >
             BAGS
           </NavLink>
         </li>
         <li>
-          <NavLink to={isAuthenticated ? "/admin" : "/login"} onClick={toggleMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>
-            {isAuthenticated ? "ADMIN" : "LOGIN"}
+          <NavLink
+            to={isAuthenticated ? '/admin' : '/login'}
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+          >
+            {isAuthenticated ? 'ADMIN' : 'LOGIN'}
           </NavLink>
         </li>
         <li>
-          <NavLink to="/contact" onClick={toggleMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+          <NavLink
+            to="/contact"
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+          >
             CONTACT
           </NavLink>
         </li>

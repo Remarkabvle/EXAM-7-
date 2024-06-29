@@ -11,14 +11,14 @@ function Header() {
   const [debouncedClick, setDebouncedClick] = useState(false);
 
   const wishlistCount = wishlist.length;
-  const cartCount = cart.length; // Count unique items instead of total quantity
+  const cartCount = cart.length; 
   const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
 
   const handleCartClick = () => {
     if (!debouncedClick) {
       // Handle your cart click logic here
       setDebouncedClick(true);
-      setTimeout(() => setDebouncedClick(false), 1000); // Adjust the delay as needed (e.g., 1000ms = 1 second)
+      setTimeout(() => setDebouncedClick(false), 1000); 
     }
   };
 

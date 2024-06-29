@@ -10,7 +10,7 @@ import Login from './pages/login/Login';
 import Admin from './pages/admin/Admin';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Contact from './pages/contact/Contact';
-import Cart from './pages/cart/Cart'; // Import the Cart component
+import Cart from './pages/cart/Cart'; 
 
 function App() {
   return (

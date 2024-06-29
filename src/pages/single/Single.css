@@ -1,9 +1,11 @@
 .single-product {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 20px;
   margin-top: 100px !important;
+  margin: 0 auto;
 }
 .single-product .skeleton {
   background: #ddd;
