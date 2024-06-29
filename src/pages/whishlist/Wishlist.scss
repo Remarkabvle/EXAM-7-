@@ -1,0 +1,23 @@
+.wishlist-wrapper {
+    padding: 20px;
+    text-align: center;
+  
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #223263;
+    }
+  
+    p {
+      font-size: 1.2rem;
+      color: #9098b1;
+    }
+  
+    .wishlist-products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+      justify-content: center;
+    }
+  }
+  

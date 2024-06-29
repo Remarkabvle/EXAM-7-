@@ -1,0 +1,31 @@
+// src/pages/admin/Admin.scss
+.admin-container {
+    padding: 20px;
+  }
+  
+  .admin-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .admin-container p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .admin-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-container button:hover {
+    background-color: #0056b3;
+  }
+  

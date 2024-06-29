@@ -1,4 +1,3 @@
-// ProductsList.jsx
 import React, { useState } from 'react';
 import { useGetProductsQuery } from './productsApi';
 import ProductCard from '../../components/products/ProductCard';

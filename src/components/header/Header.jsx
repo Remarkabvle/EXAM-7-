@@ -25,10 +25,10 @@ function Header() {
               <span className="header__wishlist-badge">{wishlistCount}</span>
             )}
           </NavLink>
-          <div className="header__icon header__cart">
+          <NavLink to="/cart" className="header__icon header__cart"> {/* Update this line */}
             <FaShoppingCart />
             <span className="header__cart-badge">2</span>
-          </div>
+          </NavLink>
         </div>
         <div className="header__items">Items $0.00</div>
       </div>

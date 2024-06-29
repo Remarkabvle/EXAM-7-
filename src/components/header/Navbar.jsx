@@ -1,13 +1,19 @@
-// Navbar.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Navbar.scss';
 import logo from '../../assets/logo.svg';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const menuRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsAuthenticated(!!token);
+  }, [location]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -35,35 +41,33 @@ function Navbar() {
 
   return (
     <nav className="navbar container" ref={menuRef}>
-      {/* Logo */}
       <div className="navbar-logo">
         <img src={logo} alt="E-Comm Logo" />
       </div>
-      {/* Toggle button */}
       <div className="navbar-toggle" onClick={toggleMenu}>
         {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
       </div>
-      {/* Navigation links */}
       <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
         <li>
-          <NavLink
-            to="/"
-            onClick={toggleMenu}
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-          >
+          <NavLink to="/" onClick={toggleMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>
             HOME
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/bags"
-            onClick={toggleMenu}
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-          >
+          <NavLink to="/bags" onClick={toggleMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>
             BAGS
           </NavLink>
         </li>
-        {/* Add other NavLink items as needed */}
+        <li>
+          <NavLink to={isAuthenticated ? "/admin" : "/login"} onClick={toggleMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+            {isAuthenticated ? "ADMIN" : "LOGIN"}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact" onClick={toggleMenu} className={({ isActive }) => (isActive ? 'active-link' : '')}>
+            CONTACT
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

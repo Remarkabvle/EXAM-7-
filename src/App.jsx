@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/header/Header';
 import Navbar from './components/header/Navbar';
 import Home from './pages/home/Home';
-import ProductsList from './features/products/ProductsList';
 import Footer from './components/footer/Footer';
 import Wishlist from './pages/whishlist/Whishlist';
-import Single from './pages/single/ProductDetails';  // Import the Single component
+import Single from './pages/single/ProductDetails';
+import Login from './pages/login/Login';
+import Admin from './pages/admin/Admin';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Contact from './pages/contact/Contact';
+import Cart from './pages/cart/Cart'; // Import the Cart component
 
 function App() {
   return (
@@ -16,7 +20,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/product/:id" element={<Single />} />  // Add the route for Single
+        <Route path="/product/:id" element={<Single />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              <Admin />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} /> {/* Added Cart route */}
       </Routes>
       <Footer />
     </Router>

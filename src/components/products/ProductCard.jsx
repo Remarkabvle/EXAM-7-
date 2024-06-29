@@ -11,7 +11,8 @@ import "./ProductCard.scss";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { like } from "../../context/WishlistSlice";
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { addToCart } from "../../context/cartSlice"; // Import addToCart action
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   const [loading, setLoading] = useState(true);
@@ -40,10 +41,14 @@ const ProductCard = ({ product }) => {
   };
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();  // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleLikeClick = () => {
     dispatch(like(product));
+  };
+
+  const handleAddToCartClick = () => {
+    dispatch(addToCart(product));
   };
 
   if (loading) {
@@ -72,7 +77,7 @@ const ProductCard = ({ product }) => {
         <div className="product-image">
           <img src={product.image} alt={product.title} />
           <div className="overlay">
-            <button className="cart-btn">
+            <button className="cart-btn" onClick={handleAddToCartClick}>
               <FaShoppingCart />
             </button>
             <button onClick={handleLikeClick} className="like-btn">
