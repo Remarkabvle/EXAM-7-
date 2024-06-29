@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0px 0px 2px gray;
+  transition: transform 1s, opacity 1s;
 }
 .product-card.loading .product-image,
 .product-card.loading .title,
@@ -87,6 +88,10 @@
 .product-card .product-image .overlay .like-btn:hover {
   background: #f0f0f0;
 }
+.product-card .product-image .overlay .cart-btn.animate-cart-btn {
+  -webkit-animation: moveToCartBtn 1s forwards;
+          animation: moveToCartBtn 1s forwards;
+}
 .product-card .product-image:hover .overlay {
   opacity: 1;
 }
@@ -107,7 +112,7 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
   color: #223263;
-  cursor: pointer; /* Add cursor pointer */
+  cursor: pointer;
 }
 .product-card .product-info .rating {
   display: flex;
@@ -123,7 +128,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  cursor: pointer; /* Add cursor pointer */
+  cursor: pointer;
 }
 .product-card .product-info .price-info .price {
   font-size: 1.2rem;
@@ -164,6 +169,57 @@
 }
 .product-card .product-info .like-dislike-buttons .dislike-btn.active {
   color: red;
+}
+
+@-webkit-keyframes moveToCartBtn {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(100vw - 100px), calc(-100vh + 50px));
+    opacity: 0;
+  }
+}
+
+@keyframes moveToCartBtn {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(100vw - 100px), calc(-100vh + 50px));
+    opacity: 0;
+  }
+}
+.added-to-cart-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  -webkit-animation: fadeInOut 3s;
+          animation: fadeInOut 3s;
+}
+@-webkit-keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 450px) {

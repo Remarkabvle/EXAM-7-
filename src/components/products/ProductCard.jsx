@@ -11,12 +11,15 @@ import "./ProductCard.scss";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { like } from "../../context/WishlistSlice";
-import { addToCart } from "../../context/cartSlice"; // Import addToCart action
-import { useNavigate } from 'react-router-dom';
+import { addToCart } from "../../context/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [animateCart, setAnimateCart] = useState(false);
 
   const wishlist = useSelector((state) => state.wishlist);
   const isLiked = wishlist.some((item) => item.id === product.id);
@@ -49,6 +52,13 @@ const ProductCard = ({ product }) => {
 
   const handleAddToCartClick = () => {
     dispatch(addToCart(product));
+    setIsAddedToCart(true);
+    setShowAlert(true);
+    setAnimateCart(true);
+    setTimeout(() => {
+      setShowAlert(false);
+      setAnimateCart(false);
+    }, 3000);
   };
 
   if (loading) {
@@ -77,7 +87,11 @@ const ProductCard = ({ product }) => {
         <div className="product-image">
           <img src={product.image} alt={product.title} />
           <div className="overlay">
-            <button className="cart-btn" onClick={handleAddToCartClick}>
+            <button
+              className={`cart-btn ${animateCart ? "animate-cart-btn" : ""}`}
+              onClick={handleAddToCartClick}
+              disabled={isAddedToCart}
+            >
               <FaShoppingCart />
             </button>
             <button onClick={handleLikeClick} className="like-btn">
@@ -97,6 +111,12 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
       </div>
+      {showAlert && (
+        <>
+          <p className="added-to-cart-alert">Qo'shilgan</p>
+          <p className="added-to-cart-alert">Added to Cart</p>
+        </>
+      )}
       {isModalOpen && (
         <Modal
           title={product.title}
