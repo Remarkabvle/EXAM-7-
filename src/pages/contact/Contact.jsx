@@ -29,7 +29,7 @@ function Contact() {
     api.open("GET", url, true);
     api.send();
 
-    // Reset form fields
+ 
     setFormData({
       fullname: "",
       email: "",
